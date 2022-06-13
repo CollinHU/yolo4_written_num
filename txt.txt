@@ -1,0 +1,39 @@
+
+
+
+python save_model.py --weights ./model/yolov4.weights  --output ./checkpoints/yolov416 --input_size 416 --model yolov4
+
+python save_model.py --weights ./model/coustom.weights  --output ./checkpoints/coustom --input_size 416 --model yolov4
+
+
+python detect.py --weights ./checkpoints/my_model --size 416 --model yolov4 --images kite.jpg --framework trt
+
+python convert_tflite.py --weights ./checkpoints/yolo224 --output ./checkpoints/yolo224/yolov224
+
+python detect.py --weights ./checkpoints/my_model --size 224 --model yolov4 --images 22.jpg 
+
+
+
+python save_model.py --weights ./model/yolov4.weights  --output ./checkpoints/yolov224 --input_size 416 --model yolov4
+
+python save_model.py --weights .checkpoints/yolo224/yolov4  --output ./checkpoints/yolov224 --input_size 224 --model yolov4
+
+
+python detect.py --weights ./checkpoints/yolo225 --size 224 --model yolov4 --images 000050.jpg --framework trt
+
+python detect.py --weights ./checkpoints/yolov224 --size 416 --model yolov4 --images kite.jpg --framework trt
+
+
+python save_model.py --weights ./model/yolov4.weights  --output ./checkpoints/yolov416 --input_size 416 --model yolov4
+
+python detect.py --weights ./checkpoints/yolov416 --size 416 --model yolov4 --images kite.jpg 
+
+
+python save_model.py --weights ./model/yolov4.weights --output ./checkpoints/yolov4.tflite --input_size 224 --model yolov4
+
+python convert_tflite.py --weights ./model/yolov4.weights --output ./checkpoints/yolov4.tflite
+
+
+python convert_trt.py --weights ./checkpoints/yolov4.tflite --quantize_mode float16 --output ./checkpoints/yolov4-trt-224
+
+python convert_tflite.py --weights ./checkpoints/yolov4.tflite  --output ./data/yolov4v.tflite
