@@ -41,6 +41,7 @@ def main(_argv):
     # train_steps = (first_stage_epochs + second_stage_epochs) * steps_per_period
 
     input_layer = tf.keras.layers.Input([cfg.TRAIN.INPUT_SIZE, cfg.TRAIN.INPUT_SIZE, 3])
+    print(cfg.TRAIN.INPUT_SIZE)
     STRIDES, ANCHORS, NUM_CLASS, XYSCALE = utils.load_config(FLAGS)
     IOU_LOSS_THRESH = cfg.YOLO.IOU_LOSS_THRESH
 
